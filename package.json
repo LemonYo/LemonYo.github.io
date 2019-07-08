@@ -1,0 +1,19 @@
+{
+  "name": "githubpage",
+  "version": "1.0.0",
+  "description": "> 风格参考 ： [https://clovertuan.github.io/](https://clovertuan.github.io/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LemonYo/LemonYo.github.io.git"
+  },
+  "author": "LemonYo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LemonYo/LemonYo.github.io/issues"
+  },
+  "homepage": "https://github.com/LemonYo/LemonYo.github.io#readme"
+}
