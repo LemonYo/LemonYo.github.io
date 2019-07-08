@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/LemonYo/LemonYo.github.io/issues"
   },
-  "homepage": "https://github.com/LemonYo/LemonYo.github.io#readme"
+  "homepage": "https://github.com/LemonYo/LemonYo.github.io#readme",
+  "devDependencies": {
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5"
+  }
 }
