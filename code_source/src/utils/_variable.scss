@@ -1,0 +1,27 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+
+// 多行省略
+@mixin text-multiple-ellipsis($n) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $n;
+  overflow: hidden;
+}
+// 单行省略
+@mixin text-ellipsis() {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+@mixin ios-scroll() {
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
