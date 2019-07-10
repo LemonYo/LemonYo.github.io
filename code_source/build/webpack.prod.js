@@ -9,18 +9,26 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = merge.smart(baseConfig, {
   mode: "production",
   output: {
-    filename: '[name].[hash:8].js',
-    path: path.resolve(__dirname, '../../dist')
+    filename: 'js/[name].[hash:8].js',
+    path: path.resolve(__dirname, '../../web'),
+    publicPath: './web'
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './'
+            }
+          },
           {
               loader: 'css-loader',
               options: {
@@ -30,7 +38,13 @@ module.exports = merge.smart(baseConfig, {
       },
       {
         test: /\.(scss|sass)$/,
-        use: [MiniCssExtractPlugin.loader,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: './'
+            }
+          },
           {
               loader: 'css-loader',
               options: {
@@ -54,12 +68,12 @@ module.exports = merge.smart(baseConfig, {
         vendors: {   // 配合chunks：‘all’使用，表示如果引入的库是在node-modules中，那就会把这个库分割出来并起名为vendors.js
             test: /[\/]node_modules[\/]/,
             priority: -10,
-            filename: 'vendors.js'
+            filename: 'js/vendors.js'
         },
         default: {  // 为非node-modules库中分割出的代码设置默认存放名称
             priority: -20,
             reuseExistingChunk: true, // 避免被重复打包分割
-            filename: 'common.js'
+            filename: 'js/common.js'
         },
         styles: {
           name: 'styles',
@@ -79,6 +93,13 @@ module.exports = merge.smart(baseConfig, {
     new CSSSplitWebpackPlugin({
       size: 4000,
       filename: '[name]-[part].[ext]'
-    })
+    }),
+    // new CopyWebpackPlugin([
+    //   {
+    //     from: '../../dist/index.html',
+    //     to: '../index.html',
+    //     force: true
+    //   }
+    // ])
   ]
 })
