@@ -93,13 +93,6 @@ module.exports = merge.smart(baseConfig, {
     new CSSSplitWebpackPlugin({
       size: 4000,
       filename: '[name]-[part].[ext]'
-    }),
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: '../../dist/index.html',
-    //     to: '../index.html',
-    //     force: true
-    //   }
-    // ])
+    })
   ]
 })
